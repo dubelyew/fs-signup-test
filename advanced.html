@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Advanced article test</title></head><body style="font-family:system-ui,sans-serif;max-width:44rem;margin:2rem auto;padding:0 1rem"><h1>Advanced article test</h1><p>Temporary test page for FairShare support.</p><p id="msg">If AEJSReady throws, an error appears in the console.</p><form data-ae-register-form="email" action="thanks.html"><input name="email"><input type="password" name="password"><button>Go</button></form><script type="text/javascript" charset="utf-8" src="https://get.myfairshare.io/framework/js/657"></script><script type="text/javascript" charset="utf-8">// Global variable to store the AEJS instance
+var myAEJS;
+
+// Function to initialize AEJS
+function AEJSReady(aeJS) {
+ myAEJS = aeJS; // Store the AEJS instance for later use
+
+ // Basic AEJS settings
+ aeJS.settings['auth_window'] = false; // Use in-page authentication
+ aeJS.settings['services'] = 'google,youtube,spotify,facebook,twitter,applemusic,email'; // Supported services
+ aeJS.settings['verify_email_for_login'] = false; // Email verification not required for login
+ aeJS.settings['return'] = '/thanks.html'; // Redirect after authentication
+
+ // Configure extra fields
+ aeJS.settings['extra_fields'] = {
+ gender: { 'required': false },
+ birthdate: { 'required': false },
+ };
+
+ // Define event handlers
+ aeJS.events.onLogin.addHandler(loginHandler); // Handle login events
+ aeJS.events.onUser.addHandler(userHandler); // Handle user-related events
+}</script></body></html>
